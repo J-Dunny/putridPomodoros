@@ -17,7 +17,7 @@ class App extends Component{
               key={movie.id} 
               title={movie.title}
               poster_path={movie.poster_path}
-              backgrop_path={movie.backgrop_path}
+              backdrop_path={movie.backdrop_path}
               average_rating={movie.average_rating}
              />
     })
@@ -29,7 +29,6 @@ class App extends Component{
     console.log(this.allMovies())
     return (
       <main>
-        <h1>Hello</h1>
         <div>{this.allMovies()}</div>
       </main>
     )

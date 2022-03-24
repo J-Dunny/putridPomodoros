@@ -6,7 +6,7 @@ const Movie = (props) => {
             <div className='movie-card'>
                 <h3>{props.title}</h3>
                 <img src={props.poster_path} />
-                <img src={props.backgrop_path} />
+                <img src={props.backdrop_path} />
                 <p>{props.average_rating}</p>
             </div>
         )
