@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 const Movie = (props) => {
-    console.log(props)
         return (
             <div className='movie-card'>
                 <h3>{props.title}</h3>

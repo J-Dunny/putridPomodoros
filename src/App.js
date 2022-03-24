@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import movieData from './movieData';
-import Movie from './components/Movie';
+import AllMovies from './components/AllMovies';
 import './App.css';
 
 class App extends Component{
@@ -11,25 +11,11 @@ class App extends Component{
     }
   }
 
-  allMovies = () => {
-    const movieCards = this.state.movies.map(movie => {
-      return <Movie  
-              key={movie.id} 
-              title={movie.title}
-              poster_path={movie.poster_path}
-              backdrop_path={movie.backdrop_path}
-              average_rating={movie.average_rating}
-             />
-    })
-    return movieCards
-  }
-
 
   render(){
-    console.log(this.allMovies())
     return (
       <main>
-        <div>{this.allMovies()}</div>
+        <AllMovies movies={this.state.movies}/>
       </main>
     )
   }
