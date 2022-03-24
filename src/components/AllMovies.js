@@ -13,10 +13,7 @@ const AllMovies = ({movies}) => {
                  />
         })
         return (
-          <section className='all-movies'>
-            <article>{movieCards}</article>
-          </section>
-          
+          <section className='all-movies'>{movieCards}</section>
         )
 }
 

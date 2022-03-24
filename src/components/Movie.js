@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 
 const Movie = (props) => {
         return (
-            <div className='movie-card'>
+            <article className='movie-card'>
                 <h3>{props.title}</h3>
                 <img src={props.poster_path} />
                 <img src={props.backdrop_path} />
                 <p>{props.average_rating}</p>
-            </div>
+            </article>
         )
     }
 
