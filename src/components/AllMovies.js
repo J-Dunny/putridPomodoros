@@ -4,6 +4,7 @@ import Movie from './Movie'
 const AllMovies = ({movies}) => {
         const movieCards = movies.map(movie => {
           return <Movie  
+                  id={movie.id}
                   key={movie.id} 
                   title={movie.title}
                   poster_path={movie.poster_path}
