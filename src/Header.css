@@ -1,0 +1,20 @@
+header {  
+    font-size: 2.5vh; 
+    color:white;
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    justify-content: space-between;
+    align-items: center; 
+    height: 12vh;
+    border: 1px solid black;
+} 
+
+input {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+h1{
+    margin-left:10px;
+}
