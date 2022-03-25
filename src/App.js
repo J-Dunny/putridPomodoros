@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import movieData from './movieData';
 import AllMovies from './components/AllMovies';
+import Header from './components/Header';
 import './App.css';
+
 
 class App extends Component{
   constructor(){
@@ -15,7 +17,8 @@ class App extends Component{
   render(){
     return (
       <main>
-        <AllMovies movies={this.state.movies}/>
+        <Header />
+        <AllMovies movies={this.state.movies}/> 
       </main>
     )
   }

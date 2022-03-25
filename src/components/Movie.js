@@ -1,24 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
+import '../Movie.css'
 
 const Movie = (props) => {
         return (
             <article className='movie-card'>
                 <h3>{props.title}</h3>
                 <img src={props.poster_path} />
-                <img src={props.backdrop_path} />
-                <p>{props.average_rating}</p>
+                <h4>Rating: {Math.round(props.average_rating*100)/100}</h4>
             </article>
         )
     }
 
 
 export default Movie
-
-// {
-//     "id": 694919,
-//     "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
-//     "backdrop_path": "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
-//     "title": "Money Plane",
-//     "average_rating": 6.666666666666667,
-//     "release_date": "2020-09-29"
-//   },

@@ -1,5 +1,6 @@
 import React from 'react'
 import Movie from './Movie'
+import '../AllMovies.css'
 
 const AllMovies = ({movies}) => {
         const movieCards = movies.map(movie => {
@@ -18,3 +19,4 @@ const AllMovies = ({movies}) => {
 }
 
 export default AllMovies
+
