@@ -1,0 +1,33 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+.container {
+  margin: 10px;
+  border-radius: 10px;
+  background-size: cover;
+}
+
+  .one-movie {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 3vh;
+    color: white;
+    height: 60vh;
+    font-weight: bold;
+  }
+
+  .one-movie-info {
+    margin-left: 15px;
+  }
+
+  .one-movie-img {
+    width: 20%;
+    height:50vh;
+    margin-left: 10px;
+  }
+
+  .exit-button {
+    margin: 5px;
+  }
