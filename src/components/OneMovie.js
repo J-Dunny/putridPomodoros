@@ -1,21 +1,29 @@
 import React from 'react'
 import '../OneMovie.css'
 
-const OneMovie = ({oneMovie}) => {
-    console.log(oneMovie)
+const OneMovie = ({oneMovie, exit}) => {
+
     return (
-        <div>
-            <img src={oneMovie.poster_path} />
-            <section className='one-movie-info'>
-                <p>Released: {oneMovie.release_date}</p>
-                <p>{oneMovie.overview}</p>
-                <p>{oneMovie.runtime} mins</p>
-                <p>Rating: {oneMovie.average_rating} </p>
-                <p>They spent ${oneMovie.budget} making this film!</p>
-                <p>But they made a total of ${oneMovie.revenue}</p>
-                <p>{oneMovie.genres}</p>
-            </section>
+        <div className='container' style={{backgroundImage:`url(${oneMovie.backdrop_path})`}} >
+            <button className='exit-button' onClick={() => exit()}>❌</button>
+        <section>
+            <div className='one-movie'>
+                <img className='one-movie-img' src={oneMovie.poster_path} />
+                <section  className='one-movie-info'>
+                    <p>Released: {oneMovie.release_date}</p>
+                    <p>{oneMovie.overview}</p>
+                    <p>{oneMovie.runtime} mins</p>
+                    <p>Rating: {oneMovie.average_rating} </p>
+                    <p>They spent ${oneMovie.budget} making this film!</p>
+                    <p>But they made a total of ${oneMovie.revenue}</p>
+                    <p>{oneMovie.genres}</p>
+                </section>
+            </div>
+            
+        </section>
+        
         </div>
+        
     )
 }
 
