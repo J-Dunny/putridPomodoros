@@ -1,17 +1,18 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 // import movieData from './movieData';
 import AllMovies from './components/AllMovies';
 import Header from './components/Header';
 import OneMovie from './components/OneMovie';
 import './App.css';
+import { fetchData } from './apiCalls'
 
 
 class App extends Component{
   constructor(){
     super()
     this.state = {
-      savedData: '',
       isLoading: false,
+      errorMsg: '',
       movies: '',
       oneMovie: '',
     }
@@ -19,47 +20,62 @@ class App extends Component{
 
  componentDidMount = () => {
    this.setState({isLoading: true})
-   fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then(response => response.json())
-      .then(data => this.setState({
-        savedData: data.movies,
+   fetchData()
+      .then(data => {
+        return this.setState({
+        ...this.state,
         movies: data.movies,
         isLoading: false
+      })
+    })
+      .catch(error => this.setState({
+        ...this.state,
+        errorMsg: error.message,
       }))
-      .catch(error => console.log(error))
  }
 
- fetchOneMovie = id => {
+ fetchOneMovie = (id="") => {
    this.setState({...this.state, isLoading: true})
-   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-     .then(response => response.json())
-     .then(data => this.setState({
-       ...this.state,
-       oneMovie: data.movie
-     }))
-     .catch(error => console.log(error))
-
+   fetchData(id)
+      .then(data => this.setState({
+         ...this.state,
+         oneMovie: data.movie,
+         isLoading: false
+       }))
+       .catch(error => this.setState({
+         ...this.state,
+         errorMsg: error.message,
+       }))
  }
 
  displayOneMovie = (e) => {
   const oneMovie = this.state.movies.find(movie => movie.poster_path === e.target.src)
   this.fetchOneMovie(oneMovie.id)
-  // this.setState({...this.state, oneMovie: oneMovie })
  }
 
  exit = () => {
     this.setState({...this.state, oneMovie: '' })
  }
 
-  render() {
-    return (
-      <main>
-        <Header />
-        {!this.state.oneMovie && <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie}/>}
-        {this.state.oneMovie && <OneMovie oneMovie={this.state.oneMovie} exit={this.exit}/>}
-      </main>
-    )
-  }
+ render() {
+   if (this.state.errorMsg){
+     return (
+       <main>
+       <Header />
+       <h1> {this.state.errorMsg} </h1>
+       </main>
+     )
+   } else {
+     return (
+       <main>
+         <Header />
+         {!this.state.oneMovie && <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie}/>}
+         {this.state.oneMovie && <OneMovie oneMovie={this.state.oneMovie} exit={this.exit}/>}
+       </main>
+     )
+   }
+
+ }
 
 }
 
