@@ -12,6 +12,7 @@ class App extends Component{
     super()
     this.state = {
       isLoading: false,
+      errorMsg: '',
       movies: '',
       oneMovie: '',
     }
@@ -20,13 +21,17 @@ class App extends Component{
  componentDidMount = () => {
    this.setState({isLoading: true})
    fetchData()
-   // fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies/")
-   //    .then(response => response.json())
-      .then(data => this.setState({
+      .then(data => {
+        return this.setState({
+        ...this.state,
         movies: data.movies,
         isLoading: false
+      })
+    })
+      .catch(error => this.setState({
+        ...this.state,
+        errorMsg: error.message,
       }))
-      .catch(error => console.log(error))
  }
 
  fetchOneMovie = (id="") => {
@@ -37,16 +42,10 @@ class App extends Component{
          oneMovie: data.movie,
          isLoading: false
        }))
-       .catch(error => console.log(error))
-   // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-   //   .then(response => response.json())
-   //   .then(data => this.setState({
-   //     ...this.state,
-   //     oneMovie: data.movie,
-   //     isLoading: false
-   //   }))
-   //   .catch(error => console.log(error))
-
+       .catch(error => this.setState({
+         ...this.state,
+         errorMsg: error.message,
+       }))
  }
 
  displayOneMovie = (e) => {
@@ -58,15 +57,25 @@ class App extends Component{
     this.setState({...this.state, oneMovie: '' })
  }
 
-  render() {
-    return (
-      <main>
-        <Header />
-        {!this.state.oneMovie && <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie}/>}
-        {this.state.oneMovie && <OneMovie oneMovie={this.state.oneMovie} exit={this.exit}/>}
-      </main>
-    )
-  }
+ render() {
+   if (this.state.errorMsg){
+     return (
+       <main>
+       <Header />
+       <h1> {this.state.errorMsg} </h1>
+       </main>
+     )
+   } else {
+     return (
+       <main>
+         <Header />
+         {!this.state.oneMovie && <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie}/>}
+         {this.state.oneMovie && <OneMovie oneMovie={this.state.oneMovie} exit={this.exit}/>}
+       </main>
+     )
+   }
+
+ }
 
 }
 
