@@ -1,16 +1,16 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 // import movieData from './movieData';
 import AllMovies from './components/AllMovies';
 import Header from './components/Header';
 import OneMovie from './components/OneMovie';
 import './App.css';
+import { fetchData } from './apiCalls'
 
 
 class App extends Component{
   constructor(){
     super()
     this.state = {
-      savedData: '',
       isLoading: false,
       movies: '',
       oneMovie: '',
@@ -19,32 +19,39 @@ class App extends Component{
 
  componentDidMount = () => {
    this.setState({isLoading: true})
-   fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then(response => response.json())
+   fetchData()
+   // fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies/")
+   //    .then(response => response.json())
       .then(data => this.setState({
-        savedData: data.movies,
         movies: data.movies,
         isLoading: false
       }))
       .catch(error => console.log(error))
  }
 
- fetchOneMovie = id => {
+ fetchOneMovie = (id="") => {
    this.setState({...this.state, isLoading: true})
-   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-     .then(response => response.json())
-     .then(data => this.setState({
-       ...this.state,
-       oneMovie: data.movie
-     }))
-     .catch(error => console.log(error))
+   fetchData(id)
+      .then(data => this.setState({
+         ...this.state,
+         oneMovie: data.movie,
+         isLoading: false
+       }))
+       .catch(error => console.log(error))
+   // fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+   //   .then(response => response.json())
+   //   .then(data => this.setState({
+   //     ...this.state,
+   //     oneMovie: data.movie,
+   //     isLoading: false
+   //   }))
+   //   .catch(error => console.log(error))
 
  }
 
  displayOneMovie = (e) => {
   const oneMovie = this.state.movies.find(movie => movie.poster_path === e.target.src)
   this.fetchOneMovie(oneMovie.id)
-  // this.setState({...this.state, oneMovie: oneMovie })
  }
 
  exit = () => {
