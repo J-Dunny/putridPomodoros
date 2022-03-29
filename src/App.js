@@ -26,13 +26,25 @@ class App extends Component{
         movies: data.movies,
         isLoading: false
       }))
-      .then(this.displayOneMovie)
       .catch(error => console.log(error))
+ }
+
+ fetchOneMovie = id => {
+   this.setState({...this.state, isLoading: true})
+   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+     .then(response => response.json())
+     .then(data => this.setState({
+       ...this.state,
+       oneMovie: data.movie
+     }))
+     .catch(error => console.log(error))
+
  }
 
  displayOneMovie = (e) => {
   const oneMovie = this.state.movies.find(movie => movie.poster_path === e.target.src)
-  this.setState({...this.state, oneMovie: oneMovie })
+  this.fetchOneMovie(oneMovie.id)
+  // this.setState({...this.state, oneMovie: oneMovie })
  }
 
  exit = () => {
