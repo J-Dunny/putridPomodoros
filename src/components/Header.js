@@ -5,10 +5,17 @@ import '../Header.css'
 class Header extends Component {
     constructor(){
         super()
-        //this.state= {input value
+        //this.state= {
+            // search: ''
+    // }
             
         }
     
+    // handleChange = event => {
+    //     this.setState({[event.target.name]: event.target.value})
+    //     }
+    // write function to search movies that includes the input value/ search state in app js passed in props to the header
+
     render() {
         return (
             <header>
@@ -19,6 +26,9 @@ class Header extends Component {
                     <input 
                         name="search"
                         type='text'
+                        placeholder='Search'
+                        // value={this.state.title}
+                        // onChange={event => this.handleChange(event)}
                     />
                     
                 </div>
