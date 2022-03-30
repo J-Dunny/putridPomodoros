@@ -4,8 +4,8 @@ import AllMovies from './components/AllMovies';
 import Header from './components/Header';
 import OneMovie from './components/OneMovie';
 import './App.css';
-import { fetchData } from './apiCalls'
-
+import { fetchData } from './apiCalls';
+import { Route, NavLink } from 'react-router-dom';
 
 class App extends Component{
   constructor(){
@@ -14,7 +14,7 @@ class App extends Component{
       isLoading: false,
       errorMsg: '',
       movies: '',
-      oneMovie: '',
+      // oneMovie: '',
     }
   }
 
@@ -48,10 +48,10 @@ class App extends Component{
        }))
  }
 
- displayOneMovie = (e) => {
-  const oneMovie = this.state.movies.find(movie => movie.poster_path === e.target.src)
-  this.fetchOneMovie(oneMovie.id)
- }
+ // displayOneMovie = (e) => {
+ //  const oneMovie = this.state.movies.find(movie => movie.poster_path === e.target.src)
+ //  this.fetchOneMovie(oneMovie.id)
+ // }
 
  exit = () => {
     this.setState({...this.state, oneMovie: '' })
@@ -66,11 +66,18 @@ class App extends Component{
        </main>
      )
    } else {
+     // {!this.state.oneMovie && <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie}/>}
+     // {this.state.oneMovie && <OneMovie oneMovie={this.state.oneMovie} exit={this.exit}/>}
+     // <OneMovie oneMovie={this.state.oneMovie} exit={this.exit}/>} />
+     console.log(this.state)
      return (
        <main>
          <Header />
-         {!this.state.oneMovie && <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie}/>}
-         {this.state.oneMovie && <OneMovie oneMovie={this.state.oneMovie} exit={this.exit}/>}
+         <Route path="/" render={() => <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie}/>} />
+         <Route exact path="/movies/:id" render={({ match }) => {
+           const oneMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
+           return <OneMovie oneMovie={oneMovie} exit={this.exit} />
+         }} />
        </main>
      )
    }
