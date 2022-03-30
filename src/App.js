@@ -13,6 +13,7 @@ class App extends Component {
       isLoading: false,
       errorMsg: '',
       movies: '',
+      oneMovie: '',
     }
   }
 
@@ -23,7 +24,8 @@ class App extends Component {
         return this.setState({
           ...this.state,
           movies: data.movies,
-          isLoading: false
+          isLoading: false,
+          oneMovie: ''
         })
       })
       .catch(error => this.setState({
@@ -33,7 +35,7 @@ class App extends Component {
   }
 
   fetchOneMovie = (id = "") => {
-    this.setState({ ...this.state, isLoading: true })
+    this.setState({ ...this.state, isLoading: true, oneMovie: ''})
     fetchData(id)
       .then(data => this.setState({
         ...this.state,
@@ -59,10 +61,10 @@ class App extends Component {
       return (
         <main>
           <Header />
-          <Route exact path="/" render={() => <AllMovies movies={this.state.movies} displayOneMovie={this.displayOneMovie} />} />
+          <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} />} />
           <Route exact path="/:id" render={({ match }) => {
-            const oneMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
-            return <OneMovie oneMovie={oneMovie} exit={this.exit} />
+            const findMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
+            return <OneMovie oneMovie={this.state.oneMovie}  exit={this.exit} />
           }} />
         </main>
       )
