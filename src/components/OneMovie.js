@@ -3,8 +3,8 @@ import '../OneMovie.css'
 import { NavLink } from 'react-router-dom'
 
 const OneMovie = ({ oneMovie }) => {
-    
-    const display = oneMovie ?
+    console.log(oneMovie)
+    const display = oneMovie.id ?
     
         <div className='container' style={{ backgroundImage: `url(${oneMovie.backdrop_path})` }} >
             <NavLink to='/'><button className='exit-button'>❌</button></NavLink>
