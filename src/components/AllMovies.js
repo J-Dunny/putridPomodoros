@@ -1,12 +1,11 @@
 import React from 'react'
 import Movie from './Movie'
 import '../AllMovies.css'
-import { NavLink } from 'react-router-dom';
 
 const AllMovies = ({movies, fetchOneMovie}) => {
-        const movieCards = movies ? movies.map(movie => {
+        const movieCards = movies.length ? movies.map(movie => {
           return (
-            <NavLink key={movie.id} to={`/${movie.id}`}>
+            
               <Movie
                     id={movie.id}
                     key={movie.id}
@@ -16,7 +15,7 @@ const AllMovies = ({movies, fetchOneMovie}) => {
                     average_rating={movie.average_rating}
                     fetchOneMovie ={fetchOneMovie}
                    />
-            </NavLink>
+            
         )}) : <h1>Loading Movies...</h1>
 
         return (

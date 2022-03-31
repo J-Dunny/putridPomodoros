@@ -10,21 +10,18 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      isLoading: false,
       errorMsg: '',
-      movies: '',
+      movies: [],
       oneMovie: '',
     }
   }
 
   componentDidMount = () => {
-    this.setState({ isLoading: true })
     fetchData()
       .then(data => {
         return this.setState({
           ...this.state,
           movies: data.movies,
-          isLoading: false,
           oneMovie: ''
         })
       })
@@ -35,12 +32,11 @@ class App extends Component {
   }
 
   fetchOneMovie = (id = "") => {
-    this.setState({ ...this.state, isLoading: true, oneMovie: ''})
+    this.setState({ ...this.state, oneMovie: ''})
     fetchData(id)
       .then(data => this.setState({
         ...this.state,
         oneMovie: data.movie,
-        isLoading: false
       }))
       .catch(error => this.setState({
         ...this.state,

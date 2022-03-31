@@ -1,4 +1,4 @@
-describe('Feedback Loop login', () => {
+describe('Home Page', () => {
     it('Should be able to visit the page and render the correct elements', () => {
       cy.visit('http://localhost:3000')
         .contains('Putrid Pomodoros')
