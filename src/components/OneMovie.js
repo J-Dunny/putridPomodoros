@@ -3,7 +3,13 @@ import '../OneMovie.css'
 import { NavLink } from 'react-router-dom'
 
 const OneMovie = ({ oneMovie }) => {
-    
+    let rating;
+    if (oneMovie.average_rating > 5) {
+        rating = <p>🍅</p>;
+    } else {
+        rating = <p>🤮</p>
+    }
+
     const display = oneMovie.id ?
 
         <div className='container' style={{ backgroundImage: `url(${oneMovie.backdrop_path})` }} >
@@ -15,15 +21,15 @@ const OneMovie = ({ oneMovie }) => {
                         <p>Released: {oneMovie.release_date}</p>
                         <p>{oneMovie.overview}</p>
                         <p>{oneMovie.runtime} mins</p>
-                        <p>Rating: {oneMovie.average_rating} </p>
                         <p>They spent ${oneMovie.budget} making this film!</p>
                         <p>But they made a total of ${oneMovie.revenue}</p>
-                        <div className='genres'> 
+                        <div className='genres'>
                             {oneMovie.genres.map(genre => {
-                            return <p key={genre}> {genre} </p>
+                                return <p key={genre}> {genre} </p>
                             })}
                         </div>
-                        
+                        <p>{rating} </p>
+
                     </section>
                 </div>
             </section>

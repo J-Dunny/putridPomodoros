@@ -10,22 +10,15 @@ const Movie = (props) => {
         rating = <p className='rating'>🤮</p>
     }
     return (
-        <div>
-
-<article onClick={() => props.fetchOneMovie(props.id)} className='movie-card' >
-                <NavLink key={props.id} to={`/${props.id}`} style={{ textDecoration: 'none' }}>
-                    <img src={props.poster_path}></img>
-                </NavLink>
-                <section className='title-rating'>
-                    <h1>{props.title}</h1>
-                    {rating}
-                </section>
-            </article>
-
-            
-
-
-        </div>
+        <article onClick={() => props.fetchOneMovie(props.id)} className='movie-card' >
+            <NavLink key={props.id} to={`/${props.id}`} style={{ textDecoration: 'none' }}>
+                <img src={props.poster_path}></img>
+            </NavLink>
+            <section className='title-rating'>
+                <h1>{props.title}</h1>
+                {rating}
+            </section>
+        </article> 
     )
 }
 
