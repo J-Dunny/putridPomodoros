@@ -42,6 +42,7 @@ class App extends Component {
         ...this.state,
         errorMsg: error.message,
       }))
+      console.log(this.state.oneMovie)
   }
 
   render() {
@@ -58,9 +59,8 @@ class App extends Component {
         <main>
           <Header />
           <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} />} />
-          <Route exact path="/:id" render={({ match }) => {
-            const findMovie = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
-            return <OneMovie oneMovie={this.state.oneMovie}  exit={this.exit} />
+          <Route exact path="/:id" render={() => {
+            return <OneMovie oneMovie={this.state.oneMovie}/>
           }} />
         </main>
       )
