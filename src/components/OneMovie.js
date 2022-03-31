@@ -10,6 +10,8 @@ const OneMovie = ({ oneMovie }) => {
         rating = <p>🤮</p>
     }
 
+    
+
     const display = oneMovie.id ?
 
         <div className='container' style={{ backgroundImage: `url(${oneMovie.backdrop_path})` }} >
@@ -21,8 +23,8 @@ const OneMovie = ({ oneMovie }) => {
                         <p>Released: {oneMovie.release_date}</p>
                         <p>{oneMovie.overview}</p>
                         <p>{oneMovie.runtime} mins</p>
-                        <p>They spent ${oneMovie.budget} making this film!</p>
-                        <p>But they made a total of ${oneMovie.revenue}</p>
+                        {oneMovie.budget ? <p>Budget: ${oneMovie.budget}</p> : "" }
+                        {oneMovie.revenue ? <p>Revenue: ${oneMovie.revenue}</p> : ""}
                         <div className='genres'>
                             {oneMovie.genres.map(genre => {
                                 return <p key={genre}> {genre} </p>

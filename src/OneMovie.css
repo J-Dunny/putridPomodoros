@@ -28,6 +28,8 @@
     width: 25%;
     height:50vh;
     margin-left: 10px;
+    max-width: 350px;
+    max-height: 500px;
   }
 
   .exit-button {
