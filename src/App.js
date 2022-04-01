@@ -31,6 +31,21 @@ class App extends Component {
       }))
   }
 
+  // refreshData = () => {
+  //   fetchData()
+  //     .then(data => {
+  //       return this.setState({
+  //         ...this.state,
+  //         movies: data.movies,
+  //         oneMovie: {}
+  //       })
+  //     })
+  //     .catch(error => this.setState({
+  //       ...this.state,
+  //       errorMsg: error.message,
+  //     }))
+  // }
+
   fetchOneMovie = (id = "") => {
     this.setState({ ...this.state, oneMovie: {}})
     fetchData(id)
@@ -45,8 +60,23 @@ class App extends Component {
   }
 
   searchMovies = (searchInput) => {
-    const output = this.state.movies.filter(movie => movie.title.includes(searchInput))
-    this.setState({...this.state, movies: output});
+    fetchData()
+      .then(data => {
+        return this.setState({
+          ...this.state,
+          movies: data.movies.filter(movie => {
+            let input = movie.title.toLowerCase()
+            if (input.includes(searchInput)) {
+              return movie
+            }
+          }),
+          oneMovie: {}
+        })
+      })
+      .catch(error => this.setState({
+        ...this.state,
+        errorMsg: error.message,
+      }))
   }
 
   render() {

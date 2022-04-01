@@ -13,8 +13,10 @@ class Header extends Component {
 
 
     handleChange = event => {
-        this.setState({[event.target.name]: event.target.value});
-        this.props.searchMovies(this.state.search);
+        const {name, value} = event.target
+        this.setState({[name]: value});
+        const output = this.state.search.toLowerCase()
+        this.props.searchMovies(output);
       }
     // write function to search movies that includes the input value/ search state in app js passed in props to the header
 
