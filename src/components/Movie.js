@@ -9,9 +9,10 @@ const Movie = (props) => {
     } else {
         rating = <p className='rating'>🤮</p>
     }
+
     return (
         <article onClick={() => props.fetchOneMovie(props.id)} className='movie-card' >
-            <NavLink key={props.id} to={`/${props.id}`} style={{ textDecoration: 'none' }}>
+            <NavLink key={props.id} to={`/${props.id}`} >
                 <img src={props.poster_path}></img>
             </NavLink>
             <section className='title-rating'>
@@ -26,14 +27,3 @@ export default Movie
 // {Math.round(props.average_rating * 100) / 100}
 //  <img src={props.poster_path} /> 
 
-// <NavLink key={props.id} to={`/${props.id}`} style={{ textDecoration: 'none' }}>
-            // <article style={{backgroundImage: `url(${props.poster_path})`}}onClick={() => props.fetchOneMovie(props.id)} className='movie-card' >
-                
-            //         <img src={props.poster_path}></img>
-                
-            //     <section className='title-rating'>
-            //         <h1>{props.title}</h1>
-            //         {rating}
-            //     </section>
-            // </article>
-            // </NavLink> 

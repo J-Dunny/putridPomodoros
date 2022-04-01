@@ -18,11 +18,8 @@
     cursor: pointer;
     transition: .5s;
     background-size: cover;
+    
 }
-
-/* NavLink {
-  text-decoration: None;
-} */
 
 .movie-card:hover {
   transform: scale(1.09);
@@ -41,5 +38,4 @@ img, picture, video, canvas, svg {
 
   .rating {
     margin-left: 10px;
-    /* font-size: 5vh; */
   }

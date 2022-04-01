@@ -5,12 +5,10 @@ import { NavLink } from 'react-router-dom'
 const OneMovie = ({ oneMovie }) => {
     let rating;
     if (oneMovie.average_rating > 5) {
-        rating = <p>🍅</p>;
+        rating = <p>🍅 {Math.round(oneMovie.average_rating * 100) / 100}</p>;
     } else {
-        rating = <p>🤮</p>
+        rating = <p>🤮 {Math.round(oneMovie.average_rating * 100) / 100}</p>
     }
-
-    
 
     const display = oneMovie.id ?
 
@@ -27,10 +25,10 @@ const OneMovie = ({ oneMovie }) => {
                         {oneMovie.revenue ? <p>Revenue: ${oneMovie.revenue}</p> : ""}
                         <div className='genres'>
                             {oneMovie.genres.map(genre => {
-                                return <p key={genre}> {genre} </p>
+                                return <p key={genre}> {genre}</p>
                             })}
                         </div>
-                        <p>{rating} </p>
+                        {rating}
 
                     </section>
                 </div>
