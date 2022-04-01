@@ -31,6 +31,21 @@ class App extends Component {
       }))
   }
 
+  // refreshData = () => {
+  //   fetchData()
+  //     .then(data => {
+  //       return this.setState({
+  //         ...this.state,
+  //         movies: data.movies,
+  //         oneMovie: {}
+  //       })
+  //     })
+  //     .catch(error => this.setState({
+  //       ...this.state,
+  //       errorMsg: error.message,
+  //     }))
+  // }
+
   fetchOneMovie = (id = "") => {
     this.setState({ ...this.state, oneMovie: {}})
     fetchData(id)
@@ -38,6 +53,26 @@ class App extends Component {
         ...this.state,
         oneMovie: data.movie,
       }))
+      .catch(error => this.setState({
+        ...this.state,
+        errorMsg: error.message,
+      }))
+  }
+
+  searchMovies = (searchInput) => {
+    fetchData()
+      .then(data => {
+        return this.setState({
+          ...this.state,
+          movies: data.movies.filter(movie => {
+            let input = movie.title.toLowerCase()
+            if (input.includes(searchInput)) {
+              return movie
+            }
+          }),
+          oneMovie: {}
+        })
+      })
       .catch(error => this.setState({
         ...this.state,
         errorMsg: error.message,
@@ -56,7 +91,7 @@ class App extends Component {
 
       return (
         <main>
-          <Header/>
+          <Header searchMovies={this.searchMovies}/>
           <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} />} />
           <Route exact path="/:id" render={() => <OneMovie oneMovie= {this.state.oneMovie}/>} />
         </main>

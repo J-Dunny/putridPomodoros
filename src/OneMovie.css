@@ -16,6 +16,7 @@
     align-items: center;
     height: 55vh;
     font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .one-movie-info {
@@ -23,6 +24,10 @@
     color: white;
     margin-left: 15px;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  }
+
+  .p-tag {
+    margin-top: 10px;
   }
 
   .one-movie-img {
@@ -34,7 +39,9 @@
   }
 
   .exit-button {
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
   }
 
   .genres {
