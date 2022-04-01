@@ -39,7 +39,9 @@
   }
 
   .exit-button {
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
   }
 
   .genres {

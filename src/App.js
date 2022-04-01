@@ -44,6 +44,11 @@ class App extends Component {
       }))
   }
 
+  searchMovies = (searchInput) => {
+    const output = this.state.movies.filter(movie => movie.title.includes(searchInput))
+    this.setState({...this.state, movies: output});
+  }
+
   render() {
     if (this.state.errorMsg) {
       return (
@@ -56,7 +61,7 @@ class App extends Component {
 
       return (
         <main>
-          <Header/>
+          <Header searchMovies={this.searchMovies}/>
           <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} />} />
           <Route exact path="/:id" render={() => <OneMovie oneMovie= {this.state.oneMovie}/>} />
         </main>
