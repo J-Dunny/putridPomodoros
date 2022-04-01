@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       errorMsg: '',
       movies: [],
-      oneMovie: '',
+      oneMovie: {},
     }
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
         return this.setState({
           ...this.state,
           movies: data.movies,
-          oneMovie: ''
+          oneMovie: {}
         })
       })
       .catch(error => this.setState({
@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   fetchOneMovie = (id = "") => {
-    this.setState({ ...this.state, oneMovie: ''})
+    this.setState({ ...this.state, oneMovie: {}})
     fetchData(id)
       .then(data => this.setState({
         ...this.state,
@@ -42,7 +42,6 @@ class App extends Component {
         ...this.state,
         errorMsg: error.message,
       }))
-      console.log(this.state.oneMovie)
   }
 
   render() {
@@ -57,11 +56,9 @@ class App extends Component {
 
       return (
         <main>
-          <Header />
+          <Header/>
           <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} />} />
-          <Route exact path="/:id" render={() => {
-            return <OneMovie oneMovie={this.state.oneMovie}/>
-          }} />
+          <Route exact path="/:id" render={() => <OneMovie oneMovie= {this.state.oneMovie}/>} />
         </main>
       )
     }

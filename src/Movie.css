@@ -10,21 +10,32 @@
     height: 36vw;
     padding: 5px;
     margin: 5px;
-    font-size: 1.8vw;
+    font-size: 1.45vw;
     border-radius: 7px;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
     transition: .5s;
+    background-size: cover;
+    
 }
 
 .movie-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.09);
 }
 
 img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
     border-radius: 10px;
+  }
+
+  .title-rating{
+    display: flex;
+    width: fit-content;
+  }
+
+  .rating {
+    margin-left: 10px;
   }
