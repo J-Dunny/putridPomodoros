@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom'
 const OneMovie = ({ oneMovie }) => {
     let rating;
     if (oneMovie.average_rating > 5) {
-        rating = <p>🍅 {Math.round(oneMovie.average_rating * 100) / 100}</p>;
+        rating = <p className="p-tag">🍅 {Math.round(oneMovie.average_rating * 100) / 100}</p>;
     } else {
-        rating = <p>🤮 {Math.round(oneMovie.average_rating * 100) / 100}</p>
+        rating = <p className="p-tag">🤮 {Math.round(oneMovie.average_rating * 100) / 100}</p>
     }
 
     const display = oneMovie.id ?
@@ -18,14 +18,14 @@ const OneMovie = ({ oneMovie }) => {
                 <div className='one-movie'>
                     <img className='one-movie-img' src={oneMovie.poster_path} />
                     <section className='one-movie-info'>
-                        <p>Released: {oneMovie.release_date}</p>
-                        <p>{oneMovie.overview}</p>
-                        <p>{oneMovie.runtime} mins</p>
-                        {oneMovie.budget ? <p>Budget: ${oneMovie.budget}</p> : "" }
-                        {oneMovie.revenue ? <p>Revenue: ${oneMovie.revenue}</p> : ""}
+                        <p className="p-tag"> Released: {oneMovie.release_date}</p>
+                        <p className="p-tag">{oneMovie.overview}</p>
+                        <p className="p-tag">{oneMovie.runtime} mins</p>
+                        {oneMovie.budget ? <p className="p-tag">Budget: ${oneMovie.budget}</p> : "" }
+                        {oneMovie.revenue ? <p className="p-tag">Revenue: ${oneMovie.revenue}</p> : ""}
                         <div className='genres'>
                             {oneMovie.genres.map(genre => {
-                                return <p key={genre}> {genre}</p>
+                                return <p className="p-tag" key={genre}> {genre}</p>
                             })}
                         </div>
                         {rating}
@@ -39,4 +39,3 @@ const OneMovie = ({ oneMovie }) => {
 }
 
 export default OneMovie
-
