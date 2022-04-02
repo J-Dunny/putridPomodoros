@@ -60,11 +60,6 @@ class App extends Component {
       }))
   }
 
-  refreshOneMovie = () => {
-    const movie = this.state.oneMovie
-    return movie
-  }
-
   searchMovies = (searchInput) => {
     fetchData()
       .then(data => {
