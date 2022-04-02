@@ -10,22 +10,24 @@ class Header extends Component {
     }
   }
 
-
-
     handleChange = event => {
-        const {name, value} = event.target
-        this.setState({[name]: value});
-        const output = this.state.search.toLowerCase()
-        this.props.searchMovies(output);
+        const {value} = event.target
+        this.setState({search: value});
       }
-    // write function to search movies that includes the input value/ search state in app js passed in props to the header
+
+
+
+
 
     render() {
+        const output = this.state.search.toLowerCase()
+        this.props.searchMovies(output);
+
         return (
             <header>
                 <h1>Putrid Pomodoros</h1>
 
-                <div>
+                <form>
                 <label name="search"></label>
                     <input
                         name="search"
@@ -35,7 +37,7 @@ class Header extends Component {
                         onChange={event => this.handleChange(event)}
                     />
 
-                </div>
+                </form>
             </header>
         )
     }
