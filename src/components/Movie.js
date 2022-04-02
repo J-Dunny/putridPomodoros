@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const Movie = (props) => {
     let rating;
-    if (props.average_rating > 5) {
+    if (props.average_rating > 6) {
         rating = <p className='rating'>🍅</p>;
     } else {
         rating = <p className='rating'>🤮</p>
@@ -26,4 +26,3 @@ const Movie = (props) => {
 export default Movie
 // {Math.round(props.average_rating * 100) / 100}
 //  <img src={props.poster_path} /> 
-
