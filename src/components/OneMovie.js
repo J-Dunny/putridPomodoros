@@ -1,44 +1,41 @@
 import React from 'react'
 import '../OneMovie.css'
+import { NavLink } from 'react-router-dom'
 
-const OneMovie = ({oneMovie, exit}) => {
+const OneMovie = ({ oneMovie }) => {
+    let rating;
+    if (oneMovie.average_rating > 5) {
+        rating = <p className="p-tag">🍅 {Math.round(oneMovie.average_rating * 100) / 100}</p>;
+    } else {
+        rating = <p className="p-tag">🤮 {Math.round(oneMovie.average_rating * 100) / 100}</p>
+    }
 
-    return (
-        <div className='container' style={{backgroundImage:`url(${oneMovie.backdrop_path})`}} >
-            <button className='exit-button' onClick={() => exit()}>❌</button>
-        <section>
-            <div className='one-movie'>
-                <img className='one-movie-img' src={oneMovie.poster_path} />
-                <section  className='one-movie-info'>
-                    <p>Released: {oneMovie.release_date}</p>
-                    <p>{oneMovie.overview}</p>
-                    <p>{oneMovie.runtime} mins</p>
-                    <p>Rating: {oneMovie.average_rating} </p>
-                    <p>They spent ${oneMovie.budget} making this film!</p>
-                    <p>But they made a total of ${oneMovie.revenue}</p>
-                    <p>{oneMovie.genres}</p>
-                </section>
-            </div>
-            
-        </section>
-        
-        </div>
-        
-    )
+    const display = oneMovie.id ?
+
+        <div className='container' style={{ backgroundImage: `url(${oneMovie.backdrop_path})` }} >
+            <NavLink className='exit-button' to='/' style={{ textDecoration: 'none' }}><p className='exit-button'> ❌ </p></NavLink>
+            <section>
+                <div className='one-movie'>
+                    <img className='one-movie-img' src={oneMovie.poster_path} />
+                    <section className='one-movie-info'>
+                        <p className="p-tag"> Released: {oneMovie.release_date}</p>
+                        <p className="p-tag">{oneMovie.overview}</p>
+                        <p className="p-tag">{oneMovie.runtime} mins</p>
+                        {oneMovie.budget ? <p className="p-tag">Budget: ${oneMovie.budget}</p> : "" }
+                        {oneMovie.revenue ? <p className="p-tag">Revenue: ${oneMovie.revenue}</p> : ""}
+                        <div className='genres'>
+                            {oneMovie.genres.map(genre => {
+                                return <p className="p-tag" key={genre}> {genre}</p>
+                            })}
+                        </div>
+                        {rating}
+
+                    </section>
+                </div>
+            </section>
+        </div> : <h1>Loading Movie details....</h1>
+
+    return display
 }
 
 export default OneMovie
-
-// {id: 1, title: 'Fake Movie Title', poster_path: 'https://image.tmdb.org/t/p/original//7G2VvG1lU8q758uOqU6z2Ds0qpA.jpg', backdrop_path: 'https://image.tmdb.org/t/p/original//oazPqs1z78LcIOFslbKtJLGlueo.jpg', release_date: '2019-12-04', …}
-// average_rating: 6
-// backdrop_path: "https://image.tmdb.org/t/p/original//oazPqs1z78LcIOFslbKtJLGlueo.jpg"
-// budget: 63000000
-// genres: ['Drama']
-// id: 1
-// overview: "Some overview that is full of buzzwords to attempt to entice you to watch this movie! Explosions! Drama! True love! Robots! A cute dog!"
-// poster_path: "https://image.tmdb.org/t/p/original//7G2VvG1lU8q758uOqU6z2Ds0qpA.jpg"
-// release_date: "2019-12-04"
-// revenue: 100853753
-// runtime: 139
-// tagline: "It's a movie!"
-// title: "Fake Movie Title"

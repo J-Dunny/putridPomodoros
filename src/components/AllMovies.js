@@ -1,12 +1,11 @@
 import React from 'react'
 import Movie from './Movie'
 import '../AllMovies.css'
-import { NavLink } from 'react-router-dom';
 
-const AllMovies = ({movies, displayOneMovie}) => {
-        const movieCards = movies ? movies.map(movie => {
+const AllMovies = ({movies, fetchOneMovie}) => {
+        const movieCards = movies.length ? movies.map(movie => {
           return (
-            <NavLink to={`/movies/${movie.id}`}>
+            
               <Movie
                     id={movie.id}
                     key={movie.id}
@@ -14,10 +13,10 @@ const AllMovies = ({movies, displayOneMovie}) => {
                     poster_path={movie.poster_path}
                     backdrop_path={movie.backdrop_path}
                     average_rating={movie.average_rating}
-                    displayOneMovie={displayOneMovie}
+                    fetchOneMovie ={fetchOneMovie}
                    />
-            </NavLink>
-        )}) : "Loading Movies..."
+            
+        )}) : <h1>Loading Movies...</h1>
 
         return (
           <section className='all-movies'>{movieCards}</section>
