@@ -36,22 +36,21 @@ export default Header
 // class Header extends Component {
 //     constructor(props) {
 //         super(props)
-//         // I think we can remove state all together and make this a funcitonal component since they say we need "controlled forms when submiting" but this isnt really a forma and we arent submitting anything in
 //         this.state = {
 //             search: ''
 //         }
 //     }
 
-//     handleChange = event => {
-//         event.preventDefault()
-//         this.setState({ search: event.target.value });
-//         //remove above line if removing state
-//         const output = event.target.value.toLowerCase()
-//         this.props.searchMovies(output);
+    // handleChange = event => {
+    //     event.preventDefault()
+    //     this.setState({ search: event.target.value });
+        
+    //     const output = this.state.search.toLowerCase()
+    //     this.props.searchMovies(output);
 
-//         console.log(output)
-//         console.log(this.state.search)
-//     }
+    //     console.log(output)
+    //     console.log(this.state.search)
+    // }
 
 
 //     render() {

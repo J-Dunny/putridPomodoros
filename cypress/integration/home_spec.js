@@ -11,7 +11,7 @@ describe('Home Page', () => {
         cy.visit('http://localhost:3000')
             .get('article')
             .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]')
-            .get('h4')
+            .get('h1')
             .contains('🍅')
     })
 

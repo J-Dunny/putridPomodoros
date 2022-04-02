@@ -3,6 +3,12 @@ import '../OneMovie.css'
 import { NavLink } from 'react-router-dom'
 
 const OneMovie = ({ oneMovie }) => {
+    if(oneMovie.id){
+        localStorage.setItem('refreshMovie', JSON.stringify(oneMovie))
+    }
+    
+    oneMovie = oneMovie.id ? oneMovie : JSON.parse(localStorage.getItem('refreshMovie'))
+    
     let rating;
     if (oneMovie.average_rating > 6) {
         rating = <p className="p-tag">🍅 {Math.round(oneMovie.average_rating * 100) / 100}</p>;
