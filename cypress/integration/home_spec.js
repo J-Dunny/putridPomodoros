@@ -2,8 +2,8 @@ describe('Home Page', () => {
     it('Should be able to visit the page and render the correct header elements', () => {
         cy.visit('http://localhost:3000')
             .contains('Putrid Pomodoros')
-            .get('label')
-            .contains('Search')
+            // .get('label')
+            // .contains('Search')
 
     })
 
@@ -12,7 +12,7 @@ describe('Home Page', () => {
             .get('article')
             .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]')
             .get('h4')
-            .contains('Rating: 6.63')
+            .contains('🍅')
     })
 
     it('user should be able to input a search and the value should include the input ', () => {

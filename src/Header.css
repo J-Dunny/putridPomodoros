@@ -3,7 +3,7 @@ header {
     color:white;
     display: flex;
     flex-direction: row;
-    background-color: red;
+    background-color: #E50815;
     justify-content: space-between;
     align-items: center; 
     height: 12vh;
@@ -15,6 +15,6 @@ input {
     margin-right:10px;
 }
 
-h1{
+h1 {
     margin-left:10px;
 }

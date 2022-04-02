@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const Movie = (props) => {
     let rating;
-    if (props.average_rating > 5) {
+    if (props.average_rating > 6) {
         rating = <p className='rating'>🍅</p>;
     } else {
         rating = <p className='rating'>🤮</p>
