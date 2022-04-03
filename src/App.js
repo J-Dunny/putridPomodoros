@@ -5,6 +5,7 @@ import OneMovie from './components/OneMovie';
 import './App.css';
 import { fetchData } from './apiCalls';
 import { Route } from 'react-router-dom';
+import OneMoHeader from './components/OneMoHeader';
 
 class App extends Component {
   constructor() {
@@ -59,6 +60,11 @@ class App extends Component {
       }))
   }
 
+  // refreshOneMovie = () => {
+  //   const movie = this.state.oneMovie
+  //   return movie
+  // }
+
   searchMovies = (searchInput) => {
     fetchData()
       .then(data => {
@@ -91,8 +97,9 @@ class App extends Component {
 
       return (
         <main>
-          <Header searchMovies={this.searchMovies}/>
+          <Route exact path="/" render={() => <Header searchMovies={this.searchMovies}/>} />
           <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} />} />
+          <Route exact path="/:id" render={() => <OneMoHeader/>} />
           <Route exact path="/:id" render={() => <OneMovie oneMovie= {this.state.oneMovie}/>} />
         </main>
       )
