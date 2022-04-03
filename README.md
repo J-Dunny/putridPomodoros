@@ -68,3 +68,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Note:  To deploy to Heroku, you must first replace the following start line in the scripts key in package.json.
+
+"start": "node server/server.js",
+
+Change this:
+
+"scripts": {
+    "cypress": "./node_modules/.bin/cypress open",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+
+  to this:
+
+  "scripts": {
+    "cypress": "./node_modules/.bin/cypress open",
+    "start": "node server/server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
