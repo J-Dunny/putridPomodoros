@@ -13,7 +13,7 @@ function Header(props) {
 
     return (
         <header>
-            <h1>Putrid Pomodoros</h1>
+            <h1 className='title-header'>Putrid Pomodoros</h1>
                 <label name="search"></label>
                 <input
                     name="search"

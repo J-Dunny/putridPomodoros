@@ -8,13 +8,24 @@ header {
     align-items: center; 
     height: 12vh;
     border: 1px solid black;
+    font-family: 'Eczar', serif;
+    font-family: 'Open Sans', sans-serif;
 } 
+
+.title-header {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
 input {
     margin-left:10px;
     margin-right:10px;
+    border-radius: 10px;
+    height: 40%;
+    width: 40%;
 }
 
 h1{
     margin-left:10px;
 }
+
+/* Test */
