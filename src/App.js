@@ -14,16 +14,19 @@ class App extends Component {
       errorMsg: '',
       movies: [],
       oneMovie: {},
+      isLoading: false
     }
   }
 
   componentDidMount = () => {
+    this.setState({...this.state, isLoading: true});
     fetchData()
       .then(data => {
         return this.setState({
           ...this.state,
           movies: data.movies,
-          oneMovie: {}
+          oneMovie: {},
+          isLoading: false
         })
       })
       .catch(error => this.setState({
@@ -32,27 +35,13 @@ class App extends Component {
       }))
   }
 
-  // refreshData = () => {
-  //   fetchData()
-  //     .then(data => {
-  //       return this.setState({
-  //         ...this.state,
-  //         movies: data.movies,
-  //         oneMovie: {}
-  //       })
-  //     })
-  //     .catch(error => this.setState({
-  //       ...this.state,
-  //       errorMsg: error.message,
-  //     }))
-  // }
-
   fetchOneMovie = (id = "") => {
-    this.setState({ ...this.state, oneMovie: {}})
+    this.setState({ ...this.state, oneMovie: {}});
     fetchData(id)
       .then(data => this.setState({
         ...this.state,
         oneMovie: data.movie,
+        isLoading: false
       }))
       .catch(error => this.setState({
         ...this.state,
@@ -60,12 +49,8 @@ class App extends Component {
       }))
   }
 
-  // refreshOneMovie = () => {
-  //   const movie = this.state.oneMovie
-  //   return movie
-  // }
-
   searchMovies = (searchInput) => {
+    this.setState({...this.state, isLoading: true});
     fetchData()
       .then(data => {
         return this.setState({
@@ -76,7 +61,8 @@ class App extends Component {
               return movie
             }
           }),
-          oneMovie: {}
+          oneMovie: {},
+          isLoading: false
         })
       })
       .catch(error => this.setState({
@@ -94,11 +80,10 @@ class App extends Component {
         </main>
       )
     } else {
-
       return (
         <main>
           <Route exact path="/" render={() => <Header searchMovies={this.searchMovies}/>} />
-          <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} />} />
+          <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} isLoading={this.state.isLoading}/>} />
           <Route exact path="/:id" render={() => <OneMoHeader/>} />
           <Route exact path="/:id" render={() => <OneMovie oneMovie= {this.state.oneMovie}/>} />
         </main>
