@@ -19,10 +19,8 @@ const Movie = (props) => {
                 <h1>{props.title}</h1>
                 {rating}
             </section>
-        </article> 
+        </article>
     )
 }
 
 export default Movie
-// {Math.round(props.average_rating * 100) / 100}
-//  <img src={props.poster_path} /> 
