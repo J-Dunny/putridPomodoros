@@ -85,7 +85,7 @@ class App extends Component {
           <Route exact path="/" render={() => <Header searchMovies={this.searchMovies}/>} />
           <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} isLoading={this.state.isLoading}/>} />
           <Route exact path="/:id" render={() => <OneMoHeader/>} />
-          <Route exact path="/:id" render={() => <OneMovie oneMovie= {this.state.oneMovie}/>} />
+          <Route exact path="/:id" render={() => <OneMovie isLoading={this.state.isLoading} oneMovie= {this.state.oneMovie}/>} />
         </main>
       )
     }
@@ -93,3 +93,12 @@ class App extends Component {
 }
 
 export default App;
+
+
+{/* <Route
+          exact path="/puppies/:id"
+          render={({ match }) => {
+            const creatureToRender = puppies.find(creature => creature.id === parseInt(match.params.id));
+            return <CreatureDetails {...creatureToRender} />
+          }}
+        /> */}
