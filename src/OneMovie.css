@@ -14,28 +14,54 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 55vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-weight: bold;
     background-color: rgba(0, 0, 0, 0.5);
   }
 
   .one-movie-info {
-    font-size: 3vh;
     color: white;
-    margin-left: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   }
 
   .p-tag {
     margin-top: 10px;
+    font-size: 2vh;
   }
 
   .one-movie-img {
     width: 25%;
-    height:50vh;
+    height: 40vw;
     margin-left: 10px;
+    margin-right: 10px;
     max-width: 350px;
     max-height: 500px;
+  }
+
+  @media screen and (max-width: 400px) {
+    .one-movie {
+      display: column;
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .one-movie-img {
+      height: auto;
+      width: 100vw;
+    }
+    .one-movie-info {
+      position: relative;
+      top: -50vh;
+      left: 0px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 
   .exit-button {
