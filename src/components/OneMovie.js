@@ -2,7 +2,7 @@ import React from 'react'
 import '../OneMovie.css'
 import { NavLink } from 'react-router-dom'
 
-const OneMovie = ({ oneMovie }) => {
+const OneMovie = ({ oneMovie, searchMovies }) => {
     if (oneMovie.id) {
         localStorage.setItem('refreshMovie', JSON.stringify(oneMovie))
     }
@@ -20,7 +20,7 @@ const OneMovie = ({ oneMovie }) => {
     const display = oneMovie != null ?
 
         <div className='container' style={{ backgroundImage: `url(${oneMovie.backdrop_path})` }} >
-            <NavLink className='exit-button' to='/' style={{ textDecoration: 'none' }}><p className='exit-button'> ❌ </p></NavLink>
+            <NavLink className='exit-button' to='/' style={{ textDecoration: 'none' }}><p className='exit-button' onClick={() => searchMovies('')}> ❌ </p></NavLink>
             <section>
                 <div className='one-movie'>
                     <img className='one-movie-img' src={oneMovie.poster_path} />
