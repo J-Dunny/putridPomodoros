@@ -2,8 +2,6 @@ describe('Home Page', () => {
     it('Should be able to visit the page and render the correct header elements', () => {
         cy.visit('http://localhost:3000')
             .contains('Putrid Pomodoros')
-            // .get('label')
-            // .contains('Search')
 
     })
 
@@ -12,7 +10,7 @@ describe('Home Page', () => {
             .get('article')
             .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]')
             .get('p')
-            .contains('🍅')
+                .contains('🍅')
     })
 
     it('user should be able to input a search and the value should include the input ', () => {
@@ -56,7 +54,7 @@ describe('Home Page', () => {
         })
     });
 
-    it('should display individual movie and details', () => {
+    it('should display individual movie and details when the user clicks on a movie image on the home page', () => {
         cy.visit('http://localhost:3000')
             .get('article').should('have.class', 'movie-card')
             .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]').click()
@@ -75,4 +73,12 @@ describe('Home Page', () => {
             cy.get('p[class="exit-button"]').click()
             cy.url().should('eq', 'http://localhost:3000/')
     })
+});
+
+it('should display fetch error when a fetch request is made with an invalid url', () => {
+    cy.visit('http://localhost:3000')
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movi/694919', {
+        statusCode: 404
+    })
+    // ^ Sad Path Test is a work in progress...
 });
