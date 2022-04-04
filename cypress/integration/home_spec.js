@@ -11,7 +11,7 @@ describe('Home Page', () => {
         cy.visit('http://localhost:3000')
             .get('article')
             .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]')
-            .get('h1')
+            .get('p')
             .contains('🍅')
     })
 
@@ -58,65 +58,21 @@ describe('Home Page', () => {
 
     it('should display individual movie and details', () => {
         cy.visit('http://localhost:3000')
-            //Failing test right here ---------------------------------------
-            .get('article').click()
-            // cy.location('pathname').should('eq', '/contact')
-            //.get('article')
-            .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]')
-            .get('h4')
-            .contains('Rating: 6.63')
+            .get('article').should('have.class', 'movie-card')
+            .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]').click()
+                .get('p')
+                    .contains('Released: 2020-09-29')
+                .get('p')
+                    .contains("A professional thief with $40 million in debt and his family's life on the line must commit one final heist - rob a futuristic airborne casino filled with the world's most dangerous criminals.")
+                .get('p')
+                    .contains('82 mins')
+                .get('p')
+                    .contains('Action')
+                .get('p')
+                    .contains('🍅 6.88')
+            cy.get('div').should('have.class', 'one-movie')
+                .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]')
+            cy.get('p[class="exit-button"]').click()
+            cy.url().should('eq', 'http://localhost:3000/')
     })
 });
-
-
-//   it('should be able to select the email and password inputs and fill them with the corresponding values', () => {
-//     cy.visit('http://localhost:3000')
-//       .get('input[type="email"]')
-//       .type('leta@turing.io')
-//       .should('have.value', 'leta@turing.io')
-//       .get('input[type="password"]')
-//       .type('keane20')
-//       .should('have.value', 'keane20')
-//   })
-
-// it('should display an error message when a user clicks the Submit button without filling both inputs', () => {
-//     cy.visit('http://localhost:3001')
-//       .get('button').click()
-//     cy.contains('Please fill out both inputs')
-//   });
-
-//   it('should be able to fill out the email and password and click Submit, directing the user to a different page', () => {
-//     cy.intercept('POST', 'http://localhost:3001/api/v1/login', {
-//         statusCode: 201,
-//         body: {
-//           id: 2,
-//           image: "https://ca.slack-edge.com/T029P2S9M-U37MJAV0T-007ccf2f5eb2-512",
-//           name: "Leta Keane"
-//         }
-//       })
-//       .visit('http://localhost:3001')
-//       .get('input[type="email"]').type('leta@turing.io')
-//       .get('input[type="password"]').type('keane20')
-//       .get('button').click()
-//       .url().should('include', '/dashboard')
-//   });
-
-//   it('should display an error message if I submit an incorrect email and password', () => {
-//     cy.intercept({
-//       method: 'POST',
-//       url: 'http://localhost:3001/api/v1/login'
-//     },
-//     {
-//       statusCode: 401,
-//       body: { 
-//         message: `Email and password do not match.  Please try again.` 
-//       }
-//     })
-//     .visit('http://localhost:3001')
-//     .get('input[type="email"]')
-//     .type('leta@turing.io')
-//     .get('input[type="password"]')
-//     .type('YOLO')
-//     .get('button').click()
-//     .get('p').should('contain', 'Email and password do not match.  Please try again.')
-//   });

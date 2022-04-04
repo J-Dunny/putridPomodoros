@@ -31,8 +31,8 @@ const OneMovie = ({ oneMovie }) => {
                         {oneMovie.budget ? <p className="p-tag">Budget: ${oneMovie.budget}</p> : ""}
                         {oneMovie.revenue ? <p className="p-tag">Revenue: ${oneMovie.revenue}</p> : ""}
                         <div className='genres'>
-                            {oneMovie.genres.map(genre => {
-                                return <p className="p-tag" key={genre}> {genre}</p>
+                            {oneMovie.genres.map((genre, i) => {
+                                return <p className="p-tag" key={genre}> {(i ? ', ' : '') + genre}</p>
                             })}
                         </div>
                         {rating}
