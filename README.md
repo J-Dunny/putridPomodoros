@@ -1,95 +1,101 @@
-# Getting Started with Create React App
+# Putrid Pomodoros
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Click [here](https://putridpomodoros-app.herokuapp.com/) to view the project!
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+  - [Introduction](#Introduction)
+  - [Set Up and Installation](#Set-Up)
+  - [Illustrations](#Illustrations)
+  - [Technologies](#Technologies)
+  - [Possible Future Extensions](#Possible-Future-Extensions)
+  - [Contributors](#Collaborators)
 
-### `npm start`
+## Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Putrid Pomodoros is a revolutionary web application (that nobody has ever thought of before) that aggregates information about movies and displays all of it in an aesethetically pleasing interface.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In this current iteration of the product, we have added the following functionality:
 
-### `npm test`
+- API Data Fetching
+- Search Functionality
+- Device Adaptability
+- Cypress End-to-End Testing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We Cypress testing to ensure that our product behaves the way we want it to in the final production version deployed on Heroku.
 
-### `npm run build`
+## Illustrations
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Loading and Viewing API Data on the Home page:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](https://media.giphy.com/media/WwqLFJBuaGelUrvbaF/giphy.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Search Functionality:
 
-### `npm run eject`
+![](https://media.giphy.com/media/hhALYg9MU8wO405Ysx/giphy.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Device Adaptability
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![](https://media.giphy.com/media/xhfOkVo29MsIBjWvH2/giphy.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Setup and Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-Note:  To deploy to Heroku, you must first replace the following start line in the scripts key in package.json.
-
-"start": "node server/server.js",
+- We deployed our application to Heroku, so the current production version of the application can always be viewed at the following link: `https://putridpomodoros-app.herokuapp.com/`.
+- If you would like to modify the project, please follow the instructions below.
+- Fork the project repository and clone it down by posting the following command in your terminal: `git clone git@github.com:J-Dunny/putridpomodoros.git git [what you want to name the repo]`.
+- Change into the directory created and then run `npm install` in your terminal to install all of the dependencies.
+- Since the production version of the application will be cloned down by default, you will need to change the following section in the package.json file to be able to work on the application locally:
 
 Change this:
 
+```
 "scripts": {
-    "cypress": "./node_modules/.bin/cypress open",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-
-  to this:
-
-  "scripts": {
     "cypress": "./node_modules/.bin/cypress open",
     "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+```
+
+To this:
+
+```
+  "scripts": {
+    "cypress": "./node_modules/.bin/cypress open",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+```
+
+- Once the previous step has been completed, cd in the root folder.  Then type "npm start" in your terminal, and hit enter and the application will launch in your browser on http://localhost:3000 by default if that port is available.
+
+## Technologies
+
+- JavaScript
+- React
+- React Router
+- CSS3
+- HTML5
+- node.js
+- Express Server
+- Cypress Testing
+- Heroku
+
+## Future Extensions
+
+Here are some future features we would like to add in later editions of the product:
+
+- User Logins
+- User favoriting and Ratings
+- Trailer Videos
+- Creative CSS Aesthetics and Branding
+
+## Contributors
+
+- Jake Dunafon | https://github.com/J-Dunny
+
+- Rory Magee | https://github.com/roryemagee1
+
