@@ -76,7 +76,7 @@ class App extends Component {
       return (
         <main>
           <Header />
-          <h1 className="error-message"> {this.state.errorMsg} </h1>
+          <h1> {this.state.errorMsg} </h1>
         </main>
       )
     } else {
