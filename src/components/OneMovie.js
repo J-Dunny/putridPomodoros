@@ -36,7 +36,6 @@ const OneMovie = ({ oneMovie, searchMovies }) => {
                             })}
                         </div>
                         {rating}
-
                     </section>
                 </div>
             </section>

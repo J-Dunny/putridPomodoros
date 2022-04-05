@@ -8,7 +8,7 @@ const AllMovies = ({movies, fetchOneMovie, isLoading}) => {
         } else {
           let movieCards = movies.length ? movies.map(movie => {
             return (
-
+              
                 <Movie
                       id={movie.id}
                       key={movie.id}

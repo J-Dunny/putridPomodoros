@@ -93,12 +93,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-{/* <Route
-          exact path="/puppies/:id"
-          render={({ match }) => {
-            const creatureToRender = puppies.find(creature => creature.id === parseInt(match.params.id));
-            return <CreatureDetails {...creatureToRender} />
-          }}
-        /> */}
