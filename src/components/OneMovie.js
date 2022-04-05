@@ -1,13 +1,24 @@
-import React from 'react'
+import React, {Component} from 'react'
 import '../OneMovie.css'
 import { NavLink } from 'react-router-dom'
 
-const OneMovie = ({ oneMovie, searchMovies }) => {
-    if (oneMovie.id) {
-        localStorage.setItem('refreshMovie', JSON.stringify(oneMovie))
+class OneMovie extends Component {
+    constructor(props){
+        super(props)
+    }
+    
+    
+    componentDidMount = () =>{
+        this.props.fetchOneMovie(this.props.fetchId)
     }
 
-    oneMovie = oneMovie.id ? oneMovie : JSON.parse(localStorage.getItem('refreshMovie'))
+    render(){
+
+    if (this.props.oneMovie.id) {
+        localStorage.setItem('refreshMovie', JSON.stringify(this.props.oneMovie))
+    }
+
+   let oneMovie = this.props.oneMovie.id ? this.props.oneMovie : JSON.parse(localStorage.getItem('refreshMovie'))
 
     let rating;
     
@@ -20,7 +31,7 @@ const OneMovie = ({ oneMovie, searchMovies }) => {
     const display = oneMovie != null ?
 
         <div className='container' style={{ backgroundImage: `url(${oneMovie.backdrop_path})` }} >
-            <NavLink className='exit-button' to='/' style={{ textDecoration: 'none' }}><p className='exit-button' onClick={() => searchMovies('')}> ❌ </p></NavLink>
+            <NavLink className='exit-button' to='/' style={{ textDecoration: 'none' }}><p className='exit-button' onClick={() => this.props.searchMovies('')}> ❌ </p></NavLink>
             <section>
                 <div className='one-movie'>
                     <img className='one-movie-img' src={oneMovie.poster_path} />
@@ -42,6 +53,7 @@ const OneMovie = ({ oneMovie, searchMovies }) => {
         </div> : <h1>Loading Movie details....</h1>
 
     return display
+}
 }
 
 export default OneMovie
