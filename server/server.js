@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const publicPath = path.join('/Users/rorymagee/turing/3module/putridPomodoros/putridpomodoros', '..', 'public');
+const publicPath = path.join('/Users/rorymagee/turing/3module/pDirectory/putridpomodoros', '..', 'public');
 app.use(express.static(publicPath));
 
 app.get('*', (req, res) => {
