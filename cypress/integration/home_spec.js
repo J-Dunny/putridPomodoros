@@ -21,7 +21,6 @@ describe('Home Page', () => {
 
 
     it('componentDidMount should fetch all movies data', () => {
-        // cy.visit('http://localhost:3000')
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 200,
             body: {
