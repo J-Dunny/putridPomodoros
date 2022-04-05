@@ -85,7 +85,7 @@ class App extends Component {
           <Route exact path="/" render={() => <Header searchMovies={this.searchMovies}/>} />
           <Route exact path="/" render={() => <AllMovies movies={this.state.movies} fetchOneMovie={this.fetchOneMovie} isLoading={this.state.isLoading}/>} />
           <Route exact path="/:id" render={() => <OneMoHeader/>} />
-          <Route exact path="/:id" render={() => <OneMovie isLoading={this.state.isLoading} oneMovie={this.state.oneMovie} searchMovies={this.searchMovies}/>} />
+          <Route exact path="/:id" render={({match}) => <OneMovie fetchOneMovie={this.fetchOneMovie} fetchId={parseInt(match.params.id)} isLoading={this.state.isLoading} oneMovie={this.state.oneMovie} searchMovies={this.searchMovies}/>} />
         </main>
       )
     }
