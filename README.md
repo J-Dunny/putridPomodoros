@@ -1,6 +1,6 @@
 # Putrid Pomodoros
 
-## Click [here](https://putridpomodoros-app.herokuapp.com/) to view the project!
+## Click [here](https://stormy-wildwood-99067.herokuapp.com/) to view the project!
 
 ## Table of Contents
 
@@ -40,37 +40,12 @@ We Cypress testing to ensure that our product behaves the way we want it to in t
 
 ## Setup and Installation
 
-- We deployed our application to Heroku, so the current production version of the application can always be viewed at the following link: `https://putridpomodoros-app.herokuapp.com/`.
+- We deployed our application to Heroku, so the current production version of the application can always be viewed at the following link: `https://stormy-wildwood-99067.herokuapp.com/`.
 - If you would like to modify the project, please follow the instructions below.
 - Fork the project repository and clone it down by posting the following command in your terminal: `git clone git@github.com:J-Dunny/putridpomodoros.git git [what you want to name the repo]`.
 - Change into the directory created and then run `npm install` in your terminal to install all of the dependencies.
-- Since the production version of the application will be cloned down by default, you will need to change the following section in the package.json file to be able to work on the application locally:
+- Run `npm start` to open the project on the browser.
 
-Change this:
-
-```
-"scripts": {
-    "cypress": "./node_modules/.bin/cypress open",
-    "start": "node server/server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-```
-
-To this:
-
-```
-  "scripts": {
-    "cypress": "./node_modules/.bin/cypress open",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-```
-
-- Once the previous step has been completed, cd in the root folder.  Then type "npm start" in your terminal, and hit enter and the application will launch in your browser on http://localhost:3000 by default if that port is available.
 
 ## Technologies
 
